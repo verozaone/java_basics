@@ -1,0 +1,48 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Intellij IDEA related files
+.idea/
+*.iml
+
+# NetBeans related files
+nbproject/
+build/
+dist/
+
+# Eclipse related files
+.settings/
+.project
+.classpath
+
+# Maven related files
+target/
+pom.xml.backup
+*.versionsBackup
+
+# Gradle related files
+.gradle/
+build/
+settings.gradle.kts.cache/
+settings.gradle.cache/
+gradle-app.setting
+gradle-build.setting
+
+# Temporary files and directories
+tmp/
+temp/
+out/
+
+# OS Specific files (e.g., macOS .DS_Store)
+.DS_Store
