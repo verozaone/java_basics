@@ -93,6 +93,160 @@ int age = 30;
 String name = "Alice";
 ```
 
+### 🆕 Using var (Java 10+)
+
+Starting from Java 10, you can use the var keyword for local variables to let the compiler infer the type:
+
+#### ✅ Basic Examples
+
+```java
+var age = 30;                         // inferred as int
+var name = "Alice";                   // inferred as String
+var price = 99.99;                    // inferred as double
+var isValid = true;                   // inferred as boolean
+var list = new ArrayList<String>();  // inferred as ArrayList<String>
+```
+
+#### ✅ In Loops
+
+```java
+var numbers = List.of(1, 2, 3, 4);
+
+for (var num : numbers) {
+    System.out.println(num);  // inferred as Integer
+}
+```
+
+#### ✅ With Streams
+
+```java
+var names = List.of("Alice", "Bob", "Charlie");
+
+var upperNames = names.stream()
+                      .map(n -> n.toUpperCase())
+                      .toList();  // inferred as List<String>
+```
+
+#### ✅ With Map Entries
+
+```java
+var map = Map.of("a", 1, "b", 2);
+
+for (var entry : map.entrySet()) {
+    System.out.println(entry.getKey() + " = " + entry.getValue());  // entry inferred as Map.Entry<String, Integer>
+}
+```
+
+#### ✅ With Lambda Expressions (as result of assignment)
+
+```java
+var greeter = (Runnable) () -> System.out.println("Hello!");
+greeter.run();  // inferred as Runnable
+```
+
+#### ✅ With Arrays
+
+```java
+var items = new String[]{"apple", "banana", "cherry"};  // inferred as String[]
+```
+
+#### 🧠 Notes
+
+- `var` only works for local variables (inside methods, constructors, blocks)
+- Type is inferred at compile-time, not runtime
+- Improves code readability in some cases but may hurt clarity if overused
+
+✅ var is not a data type. It's a keyword for type inference used only for local variables.
+
+#### ⚠️ var Limitations
+
+- ❌ Cannot be used for instance or static variables
+- ❌ You must initialize the variable at the time of declaration
+- ✅ Works only within methods, constructors, or blocks
+  
+### ❌ Invalid Usages of `var` in Java
+
+The `var` keyword has **strict rules** in Java. Below are common incorrect usages and why they fail.
+
+#### 🚫 1. Declaration without initialization
+
+```java
+var x;  // ❌ Error: Cannot use 'var' without initializer
+```
+
+> ❓ **Why is this invalid?**  
+> Java must **infer the type from the assigned value**.  
+> If no value is provided at the time of declaration, the compiler cannot determine the type, and **type inference fails**.
+
+#### 🚫 2. Used as a method parameter
+
+```java
+public void setName(var name) {  // ❌ Error: 'var' is not allowed here
+    System.out.println(name);
+}
+```
+
+> ❓ **Why is this invalid?**  
+> The `var` keyword can **only be used for local variables** inside methods, constructors, or blocks.  
+> It **cannot** be used for **method parameters** or **return types**, as type inference in those contexts is not supported by the Java compiler.
+
+#### 🚫 3. Used as a return type
+
+```java
+public var getData() {  // ❌ Error: 'var' cannot be used as a return type
+    return "Data";
+}
+```
+
+> ❓ **Why is this invalid?**  
+> In Java, **method return types must be explicitly declared**.  
+> The `var` keyword is intended **only for local variable declarations**, not for method signatures.
+
+#### 🚫 4. Used for instance or static variables (fields)
+
+```java
+class Example {
+    var count = 0;  // ❌ Error: 'var' not allowed in class fields
+}
+```
+
+> ❓ **Why is this invalid?**  
+> Java does **not allow `var` for fields** (instance or static variables).  
+> The `var` keyword is **restricted to local variables** declared within methods, constructors, or blocks.
+
+#### 🚫 5. Used with array initialization without type context
+
+```java
+var numbers = {1, 2, 3};  // ❌ Error: Cannot infer type from array initializer
+```
+
+> ❓ **Why is this invalid?**  
+> When using `var` with arrays, you must **explicitly use the `new` keyword**.  
+> This gives the compiler a clear indication of the array's **type**, which is required for type inference.
+
+✅ Correct way:
+
+```java
+var numbers = new int[]{1, 2, 3};  // ✅ Inferred as int[]
+```
+
+#### 🚫 6. Mixing var with compound declarations
+
+```java
+var a = 10, b = 20;  // ❌ Error: Cannot declare multiple variables with var
+```
+
+> ❓ **Why is this invalid?**  
+> Each `var` declaration must be **separate** because **type inference is done per variable**.  
+> Java cannot infer types when multiple variables are declared in a single statement using `var`.
+
+✅ Correct Way:
+
+```java
+var a = 10;
+var b = 20;
+```
+
 ---
 
 ### 🗂️ Types of Variables in Java
@@ -104,7 +258,6 @@ Java variables fall into **three main categories** based on their declaration lo
 | **Local** | Inside a method, block, or constructor      | Exists during method execution only | Stack         |
 | **Instance** | Inside a class (non-static)              | Exists for each object instance     | Heap          |
 | **Static** | Inside a class (with `static` keyword)     | Shared among all instances of class | Method Area   |
-
 
 ### 🔹 Local Variables
 
@@ -181,7 +334,7 @@ Only **instance** and **static** variables get default values:
 - **Case-sensitive** (`myVar` ≠ `myvar`)
 - Use **camelCase** by convention
 
-#### ✅ Good Examples:
+#### ✅ Good Examples
 
 ```java
 int studentAge;
