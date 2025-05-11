@@ -389,3 +389,64 @@ final double PI = 3.14159;
 | **Local**      | Method/block  | Until method exits         | Developer          |
 | **Instance**   | Class          | As long as object exists   | Java (default)     |
 | **Static**     | Class (`static`) | As long as class is loaded | Java (default)   |
+
+---
+
+### 🎁 Wrapper Classes in Java
+
+Java provides **wrapper classes** to use **primitive data types as objects**. These are especially useful when working with:
+
+- **Collections** (`List`, `Set`, etc.)
+- **Generics**
+- **Utility methods**
+- **Nullable values**
+
+### 🔄 Primitive to Wrapper Mapping
+
+| Primitive | Wrapper     |
+|-----------|-------------|
+| `byte`    | `Byte`      |
+| `short`   | `Short`     |
+| `int`     | `Integer`   |
+| `long`    | `Long`      |
+| `float`   | `Float`     |
+| `double`  | `Double`    |
+| `char`    | `Character` |
+| `boolean` | `Boolean`   |
+
+
+### ✅ Why Wrapper Classes?
+
+Wrapper classes are useful in the following scenarios:
+
+- Required for use in **collections** (e.g., `List<Integer>`, `Map<String, Boolean>`)
+- Enable use of **`null` values** (primitives can't be null)
+- Provide **utility methods** such as:
+  - `parseInt()`
+  - `compareTo()`
+  - `toString()`
+  - `valueOf()`
+
+---
+
+### 🔄 Autoboxing and Unboxing
+
+Java automatically converts between **primitive types** and their **corresponding wrapper classes**.
+
+#### 🔹 Autoboxing (Primitive → Wrapper)
+
+The compiler automatically converts a primitive to its wrapper object:
+
+```java
+int num = 5;
+Integer boxedNum = num;  // Autoboxing
+```
+
+#### 🔹 Unboxing (Wrapper → Primitive)
+
+The compiler automatically converts a wrapper object to its primitive type:
+
+```java
+Integer obj = 10;
+int value = obj;  // Unboxing
+```
