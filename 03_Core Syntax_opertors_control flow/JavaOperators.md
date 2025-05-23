@@ -44,16 +44,16 @@ Returns `true` only if **both conditions are true**.
 int a = 10;
 int b = 20;
 int c = 30;
+
 if (c > a && c > b) {
     System.out.println("True");
 }
 // Output: True
 
-✅ OR Operator (||)
-Returns true if at least one condition is true.
+✅ OR Operator(||)
+Returns `true` if at least one condition is true.
 
-Java
-
+```java
 int a = 10;
 int b = 20;
 int c = 30;
@@ -61,6 +61,8 @@ if (c > a || c < b) {
     System.out.println("True");
 }
 // Output: True
+
+
 
 ✅ NOT Operator (!)
 Returns the opposite of a condition’s result.
@@ -106,90 +108,5 @@ System.out.println(a && b); // false
 System.out.println(a || b); // true
 System.out.println(!a);     // false
 System.out.println(!b);     // true
-
-
-✅ Decision Making in Java (Control Flow)
-Java supports:
-
-if, if-else, nested-if, if-else-if
-switch-case
-Jump statements: break, continue, return
-🔹 Java if Statement
-Executes code if the condition is true.
-
-Java
-
-int i = 10;
-if (i < 15) {
-    System.out.println("Inside If block");
-}
-
-System.out.println("10 is less than 15");
-🔸 Java if-else Statement
-Java
-
-int i = 10;
-if (i < 15) {
-    System.out.println("i is smaller than 15");
-} else {
-    System.out.println("i is greater than or equal to 15");
-}
-🔹 Java nested-if Statement
-Java
-
-int i = 10;
-if (i < 15) {
-    if (i < 12) {
-        System.out.println("i is smaller than 12 too");
-    }
-}
-🔸 Java if-else-if Ladder
-Java
-
-int i = 20;
-if (i == 10) {
-    System.out.println("i is 10");
-} else if (i == 15) {
-    System.out.println("i is 15");
-} else if (i == 20) {
-    System.out.println("i is 20");
-} else {
-    System.out.println("i is not present");
-}
-🔹 Java switch-case Statement
-Java
-
-int num = 20;
-switch (num) {
-    case 5:
-        System.out.println("It is 5");
-        break;
-    case 10:
-        System.out.println("It is 10");
-        break;
-    case 20:
-        System.out.println("It is 20");
-        break;
-    default:
-        System.out.println("Not present");
-}
-Uses break to avoid fall-through.
-
-
-🔁 Java Jump Statements
-break – Exit from loop/switch
-continue – Skip current loop iteration
-return – Exit method
-<!-- end list -->
-
-Java
-
-int x = 0;
-if (x == 0) {
-    return;  // exits method early
-}
-
-
-
 
 
